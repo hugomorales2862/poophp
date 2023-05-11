@@ -1,37 +1,60 @@
 <?php
-class Usuario {
-    //definicion de productos 
-    public float $precio= 2.56;
-    public string $nombre= "nombre";
-    public bool $disponible= true;
-// definicion de metodos o de funciones 
+// DEFINICION DE LA CLASE PRODUCTO
+class Producto{
+    // DEFINICION DE ATRIBUTOS
+    public $precio;
+    public $nombre;
+    public $disponible;
 
-    function mostrarNombre(){
-        echo $this -> nombre;
+    // DEFINICION DE METODOS
+
+    public function mostrarNombreProducto() : void{
+        echo $this->nombre;
     }
-    
+
+    public function mostrarPrecioProducto() : void{
+        echo $this->precio;
+    }
+    public function mostrarDisponibleProducto() : void{
+        if ($this->disponible){
+         echo "Disponible";
+        }else{
+            echo "No Disponible ";
+        }
+        
+    }
+
 }
 
-//creacion de objeto
-// crear una instancia
+// CREACIÓN DE UN OBJETO
+// CREAR UNA INSTANCIA
+$mesa = new Producto(); 
 
-$mesa= new Usuario();
-$mesa -> nombre= "mesa";
-$mesa -> precio= 500;
-$mesa -> disponible= true;
+$mesa->nombre = "Mesa";
+$mesa->precio = 500;
+$mesa->disponible = true;
 
-$silla= new Usuario();
-$silla -> nombre= "mesa";
-$silla -> precio= 500;
-$silla  -> disponible= true;
+$silla = new Producto(); 
+
+$silla->nombre = "Silla grande";
+$silla->precio = 100;
+$silla->disponible = false;
+
+
 
 echo "<pre>";
-var_dump ($mesa);
-var_dump ($silla);
+var_dump($mesa);
+echo "</pre>";
+echo "<pre>";
+var_dump($silla);
 echo "</pre>";
 
-
-$mesa -> mostrarNombre();
-$silla -> mostrarNombre();
+$mesa->mostrarNombreProducto();
+$mesa->mostrarPrecioProducto();
+$mesa->mostrarDisponibleProducto();
+echo "<br>";
+$silla->mostrarNombreProducto();
+$silla->mostrarPrecioProducto();
+$silla->mostrarDisponibleProducto();
 
 ?>
