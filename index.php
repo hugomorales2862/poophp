@@ -6,6 +6,10 @@ class Producto{
     public $nombre;
     public $disponible;
 
+    //metodo constructor
+
+    public function __construct()
+
     // DEFINICION DE METODOS
 
     public function mostrarNombreProducto() : void{
