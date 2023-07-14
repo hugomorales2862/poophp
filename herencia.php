@@ -1,34 +1,59 @@
 <?php
-class Transporte{
-    public $ruedas;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// FINAL - 
+// ABSTRACT -
+// STATIC -
+
+abstract class Transporte{
+    protected $ruedas;
     public $capacidad;
-    public function __construct($ruedas,$capacidad){
+    public static $color = "Verde";
+
+    public function __construct($ruedas, $capacidad){
         $this->ruedas = $ruedas;
         $this->capacidad = $capacidad;
-
-    }
-    public function getInfo (): void{
-        echo "el transporte tiene $this->rueda ruedas, y tiene capacidad de: $this->capacidad";
-    }
-    public function getInfo(): void{
-        echo "el transporte tiene $this->ruedas ruedas";
-
     }
 
+    final public static function getColor(){
+        echo "El transporte es de color " . self::$color;
+    }
+
+    public function getInfo() : void{
+        echo "El transporte tiene $this->ruedas ruedas, y tiene capacidad de: $this->capacidad";
+    }
+
+    public function getRuedas(): void{
+        echo "El transporte tiene $this->ruedas ruedas";
+    }
 }
-//extends se usa para no repetir todo lo que esta arriba
+
 class Carro extends Transporte{
     public $puertas;
-    public function getInfo(): void {
-        echo "el transporte tiene $this->ruedas ruedas, tiene capacidad de: $this->capacidad y $this->puertas puertas"; 
+
+    public function __construct($puertas = 0, $ruedas = 0, $capacidad = 0)
+    {
+        $this->puertas = $puertas;
+        parent::__construct($ruedas, $capacidad);
+    }
+
+    public function getInfo() : void{
+        echo "El carro tiene $this->ruedas ruedas, capacidad de: $this->capacidad y $this->puertas puertas, y el color es: " . parent::$color;
     }
 }
+
 class Bicicleta extends Transporte{
-    public function getInfo(): void {
-    echo "el transporte tiene $this->ruedas ruedas, y tiene capacidad de: $this->capacidad";
+    public function getInfo() : void{
+        echo "La bicicleta tiene $this->ruedas ruedas, capacidad de: $this->capacidad";
     }
 }
-$carroToyota=new Carro(4,5);
 
+$transporte = new Transporte(2,3);
 
-?>
+$carroMazda = new Carro(2,4,5);
+// $carroToyota->ruedas = 6;
+$carroMazda->getInfo();
+echo "<br>";
+$bicicletaSHIMANO = new Bicicleta(2,1);
+$bicicletaSHIMANO->getInfo();
